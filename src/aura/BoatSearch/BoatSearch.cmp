@@ -1,11 +1,16 @@
 <aura:component implements="flexipage:availableForAllPageTypes" >
-	
+
+	<aura:attribute name="selectedBoatTypeId" type="Id"/>
+
+    <aura:handler name="formsubmit" event="c:FormSubmit"
+                  action="{!c.onFormSubmit}"/>
+
 	<lightning:card title="Find a Boat" class="findaboat">
-		<c:BoatSearchForm />
+		<c:BoatSearchForm aura:id="boatSearchForm"/>
 	</lightning:card>
 
 	<lightning:card title="Matching Boats">
-		<c:BoatSearchResults />
+        <c:BoatSearchResults aura:id="boatSearchResults"/>
 	</lightning:card>
 
 </aura:component>

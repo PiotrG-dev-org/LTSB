@@ -1,3 +1,21 @@
 <aura:component controller="BoatSearchResults" implements="flexipage:availableForAllPageTypes">
 	<aura:attribute name="boats" type="Boat__c[]" />
+    <aura:attribute name="boatTypeId" type="Id" />
+
+	<aura:method name="search" access="public" action="{!c.doSearch}">
+        <aura:attribute name="boatTypeId" type="Id"/>
+	</aura:method>
+
+    <aura:if isTrue="{!!empty(v.boats)}">
+		<lightning:layout multipleRows="true" horizontalAlign="center">
+            <aura:iteration items="{!v.boats}" var="boat">
+				<lightning:layoutItem padding="around-small" size="3">
+					<c:BoatTile boat="{!boat}"/>
+				</lightning:layoutItem>
+            </aura:iteration>
+		</lightning:layout>
+		<aura:set attribute="else">
+            <div class="slds-align_absolute-center">No boats found</div>
+		</aura:set>
+	</aura:if>
 </aura:component>

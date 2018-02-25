@@ -17,5 +17,18 @@
     	});
     	
     	createRecordEvent.fire();
-	}
+	},
+
+	onFormSubmit : function(component, event, helper) {
+        var compEvent = component.getEvent("formsubmit");
+        var boatTypeId = component.get("v.selectedBoatTypeId");
+
+        compEvent.setParams({
+            "formData" : {
+                "boatTypeId"  : boatTypeId
+            }
+        });
+
+        compEvent.fire();
+    }
 })
