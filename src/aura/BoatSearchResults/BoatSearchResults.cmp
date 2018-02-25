@@ -1,16 +1,20 @@
 <aura:component controller="BoatSearchResults" implements="flexipage:availableForAllPageTypes">
 	<aura:attribute name="boats" type="Boat__c[]" />
     <aura:attribute name="boatTypeId" type="Id" />
+    <aura:attribute name="selectedBoatId" type="Id" />
 
 	<aura:method name="search" access="public" action="{!c.doSearch}">
         <aura:attribute name="boatTypeId" type="Id"/>
 	</aura:method>
 
+    <aura:handler name="boatselected" event="c:BoatSelect"
+                  action="{!c.onBoatSelect}"/>
+
     <aura:if isTrue="{!!empty(v.boats)}">
 		<lightning:layout multipleRows="true" horizontalAlign="center">
             <aura:iteration items="{!v.boats}" var="boat">
 				<lightning:layoutItem padding="around-small" size="3">
-					<c:BoatTile boat="{!boat}"/>
+					<c:BoatTile boat="{!boat}" selected="{!v.selectedBoatId == boat.Id ? 'true' : 'false'}"/>
 				</lightning:layoutItem>
             </aura:iteration>
 		</lightning:layout>

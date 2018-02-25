@@ -1,7 +1,10 @@
 <aura:component implements="flexipage:availableForAllPageTypes">
 	<aura:attribute name="boat" type="Boat__c" />
+    <aura:attribute name="selected" type="Boolean" default="false"/>
 
-	<lightning:button class="tile">
+    <aura:registerEvent name="boatselected" type="c:BoatSelect"/>
+
+	<lightning:button class="{!v.selected == 'true' ? 'tile selected' : 'tile'}" onclick="{!c.onBoatClick}">
 		<div style="{!'background-image:url(' + v.boat.Picture__c + ')'}" class="innertile">
 			<div class="lower-third">
                 <h1 class="slds-truncate">
