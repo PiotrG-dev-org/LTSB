@@ -7,7 +7,7 @@
         <aura:attribute name="boatTypeId" type="Id"/>
 	</aura:method>
 
-    <aura:handler name="boatselected" event="c:BoatSelect"
+    <aura:handler name="boatselect" event="c:BoatSelect"
                   action="{!c.onBoatSelect}"/>
 
     <aura:if isTrue="{!!empty(v.boats)}">

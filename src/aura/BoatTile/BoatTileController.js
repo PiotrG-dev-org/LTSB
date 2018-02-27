@@ -1,12 +1,17 @@
 ({
 	onBoatClick : function(component, event, helper) {
-        var compEvent = component.getEvent("boatselected");
-        var boatId = component.get("v.boat").Id;
+	    var boat = component.get('v.boat');
 
-        compEvent.setParams({
-            "boatId" : boat
+        var boatSelectEvent = component.getEvent('boatselect');
+        boatSelectEvent.setParams({
+            'boatId' : boat.Id
         });
+        boatSelectEvent.fire();
 
-        compEvent.fire();
+        var boatSelectedEvent = $A.get('e.c:BoatSelected');
+        boatSelectedEvent.setParams({
+            'boat' : boat
+        });
+        boatSelectedEvent.fire();
 	}
 })
