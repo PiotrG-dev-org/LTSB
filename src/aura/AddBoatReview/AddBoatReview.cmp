@@ -25,6 +25,8 @@
             <lightning:inputRichText aura:id="comment" value="{!v.boatReview.Comment__c}" placeholder="Comment" disabledCategories="FORMAT_FONT"/>
         </div>
         <div class="slds-form-element">
+            <label class="slds-form-element__label">Rating</label>
+            <c:FiveStarRating aura:id="fivestar" value="{!v.boatReview.Rating__c}" readonly="false"/>
         </div>
         <div class="slds-form-element">
             <lightning:button label="Submit" iconName="utility:save" onclick="{!c.onSave}" class="slds-align_absolute-center"/>

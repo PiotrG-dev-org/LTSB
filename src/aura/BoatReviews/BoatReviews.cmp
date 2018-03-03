@@ -4,7 +4,7 @@
 
     <aura:method name="refresh" action="{!c.doInit}"/>
 
-    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     <aura:handler name="change" value="{!v.boat}" action="{!c.refresh}"/>
 
 
@@ -31,6 +31,7 @@
                             <p>{!boatReview.Name}</p>
                         </div>
                         <lightning:formattedRichText value="{!boatReview.Comment__c}"/>
+                        <c:FiveStarRating value="{!boatReview.Rating__c}" readonly="true"/>
                     </article>
                 </div>
             </aura:iteration>

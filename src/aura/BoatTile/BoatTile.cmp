@@ -4,6 +4,7 @@
 
     <aura:registerEvent name="boatselect" type="c:BoatSelect"/>
     <aura:registerEvent name="boatselected" type="c:BoatSelected"/>
+    <aura:registerEvent name="plotmapmarker" type="c:PlotMapMarker"/>
 
 
     <lightning:button class="{!v.selected == 'true' ? 'tile selected' : 'tile'}" onclick="{!c.onBoatClick}">

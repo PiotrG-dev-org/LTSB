@@ -14,10 +14,14 @@
         //var tabSetComponent = component.find("tabset");
         //tabSetComponent.selectedTabId = "boatreviewtab";
         component.set("v.selectedTabId","boatreviewtab");
-        component.find("boatreview").refresh();
+        component.find("boatreviews").refresh();
     },
 
     onRecordUpdated : function(component, event, helper) {
-        component.find("boatreview").refresh();
+        var boatReviewComponent = component.find("boatreviews");
+
+        if(boatReviewComponent){
+            boatReviewComponent.refresh();
+        }
     }
 })
