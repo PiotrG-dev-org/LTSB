@@ -2,6 +2,7 @@
 
     <aura:attribute name="boat" type="Boat__c" access="public"/>
     <aura:attribute name="id" type="Id" access="public"/>
+    <aura:attribute name="selectedTabId" type="String" default="detailsTab"/>
 
     <force:recordData aura:id="service"
             recordId="{!v.id}"
@@ -12,17 +13,18 @@
     />
 
     <aura:handler event="c:BoatSelected" action="{!c.onBoatSelected}"/>
+    <aura:handler name="boatreviewadded" event="c:BoatReviewAdded" action="{!c.onBoatReviewAdded}"/>
 
     <aura:if isTrue="{!v.boat != undefined}">
-        <lightning:tabset>
-            <lightning:tab label="Details">
+        <lightning:tabset aura:id="tabset" selectedTabId="{!v.selectedTabId}">
+            <lightning:tab id="detailsTab" label="Details">
                 <c:BoatDetail boat="{!v.boat}"/>
             </lightning:tab>
-            <lightning:tab label="Reviews">
-                Sample Content Two
+            <lightning:tab id="boatreviewtab" label="Reviews">
+                <c:BoatReviews aura:id="boatreview" boat="{!v.boat}"/>
             </lightning:tab>
             <lightning:tab label="Add Review">
-                Sample Content Three
+                <c:AddBoatReview boat="{!v.boat}"/>
             </lightning:tab>
         </lightning:tabset>
     </aura:if>

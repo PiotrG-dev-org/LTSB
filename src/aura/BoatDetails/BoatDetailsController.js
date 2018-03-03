@@ -10,7 +10,14 @@
         ldService.reloadRecord();
     },
 
-    onRecordUpdated : function(component, event, helper) {
+	onBoatReviewAdded : function(component, event, helper) {
+        //var tabSetComponent = component.find("tabset");
+        //tabSetComponent.selectedTabId = "boatreviewtab";
+        component.set("v.selectedTabId","boatreviewtab");
+        component.find("boatreview").refresh();
+    },
 
+    onRecordUpdated : function(component, event, helper) {
+        component.find("boatreview").refresh();
     }
 })
